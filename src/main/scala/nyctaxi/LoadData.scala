@@ -50,9 +50,9 @@ object LoadData {
 
     val df = sparkSession.read.option("header","true").csv(path)
 
-    val filteredDf = df.select( "VendorID",
-      "tpep_pickup_datetime",
-      "tpep_dropoff_datetime",
+    val filteredDf = df.select( "vendor_id",
+      "pickup_datetime",
+      "dropoff_datetime",
       "passenger_count",
       "trip_distance",
       "pickup_longitude",
