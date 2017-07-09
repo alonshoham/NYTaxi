@@ -1,8 +1,9 @@
 package nyctaxi
 
+import java.time.{DayOfWeek, LocalDate}
 import java.time.format.DateTimeFormatter
 
-import org.apache.spark.sql.{SaveMode, SparkSession}
+import org.apache.spark.sql.{Column, SaveMode, SparkSession}
 import org.apache.spark.{SparkConf, SparkContext}
 import org.insightedge.spark.context.InsightEdgeConfig
 import org.insightedge.spark.implicits.all._
@@ -74,5 +75,18 @@ object LoadData {
     sparkSession.stopInsightEdgeContext()
 
     println( "DataFrame load took " + ( endTime - startTime ) + " msec." )
+  }
+
+  def isWeekday(column:Column):Boolean = {
+    val dateFormat = new java.text.SimpleDateFormat("dd-MM-yyyy")
+    val dateTimeFormat = DateTimeFormatter.ofPattern("yyyy-MM-dd hh:mm:ss")
+
+//    val day=LocalDate.parse(column.as[String].toString(),dateTimeFormat).getDayOfWeek()
+
+//    if (day.compareTo(DayOfWeek.SATURDAY)==1) return false
+
+//    if (day.compareTo(DayOfWeek.SUNDAY)==1) return false
+
+    return true
   }
 }
