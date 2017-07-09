@@ -63,7 +63,7 @@ object LoadData {
           df("dropoff_longitude") <= ( goldmanSacksLocation.longitude + locationPrecision ) &&
           df("dropoff_latitude") >= ( goldmanSacksLocation.latitude - locationPrecision ) &&
           df("dropoff_latitude") <= ( goldmanSacksLocation.latitude + locationPrecision )
-        /*TODO add filtering according to working days only*/
+
         /*df( "tpep_dropoff_datetime" )......*/ )
     df.printSchema()
     filteredDf.show()
