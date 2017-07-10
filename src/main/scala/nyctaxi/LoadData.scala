@@ -77,16 +77,25 @@ object LoadData {
     println( "DataFrame load took " + ( endTime - startTime ) + " msec." )
   }
 
-  def isWeekday(column:Column):Boolean = {
+  def isWeekday(string:String):Boolean = {
     val dateFormat = new java.text.SimpleDateFormat("dd-MM-yyyy")
     val dateTimeFormat = DateTimeFormatter.ofPattern("yyyy-MM-dd hh:mm:ss")
 
-//    val day=LocalDate.parse(column.as[String].toString(),dateTimeFormat).getDayOfWeek()
+    val day=LocalDate.parse(string,dateTimeFormat).getDayOfWeek()
 
-//    if (day.compareTo(DayOfWeek.SATURDAY)==1) return false
+    if (day.compareTo(DayOfWeek.SATURDAY)==1) return false
 
-//    if (day.compareTo(DayOfWeek.SUNDAY)==1) return false
+    if (day.compareTo(DayOfWeek.SUNDAY)==1) return false
 
     return true
   }
+
+
+//  def getTimestamp: (String => java.sql.Timestamp) = // your function here
+//
+//  val test = myDF.select("my_column").rdd.map {
+//    case Row(string_val: String) => (string_val, getTimestamp(string_val))
+//  }.toDF("my_column", "new_column")
+
+
 }
